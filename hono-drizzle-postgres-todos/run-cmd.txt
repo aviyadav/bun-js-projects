@@ -1,0 +1,39 @@
+bun create hono@latest hono-drizzle-postgres-todos
+cd hono-drizzle-postgres-todos
+bun add drizzle-orm pg
+bun add -D drizzle-kit @types/pg drizzle-seed
+    code-editor
+
+
+bun run db:generate:migration
+bun run db:migrate
+bun run db:studio
+    https://local.drizzle.studio
+
+        drizzle runner - db.select().from(todos).limit(10);
+
+                       - db.select()
+                            .from(todos)
+                            .where(eq(todos.userId, "e466b3eb-6ea2-4ca0-e4cd-34806a2abd94"));
+
+                            db.select()
+                            .from(todos)
+                            .where(eq(todos.userId, "e466b3eb-6ea2-4ca0-e4cd-34806a2abd94"))
+                            .orderBy(desc(todos.createdAt));
+
+                            db.insert(todos).values({
+                                userId: "e466b3eb-6ea2-4ca0-e4cd-34806a2abd94",
+                                title: "clean the basement",
+                                description: "vaccum and put away the baby toys",
+                            })
+                            .returning();
+
+bun run db:seed
+
+
+bun test
+
+bun run db:reset
+
+bun run dev
+
