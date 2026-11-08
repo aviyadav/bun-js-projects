@@ -1,0 +1,20 @@
+{
+  "name": "conduit-bun-hono",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=production bun src/server.ts",
+    "start:cluster": "NODE_ENV=production bun src/cluster.ts",
+    "seed": "uv run seed/seed.py",
+    "api:test": "bash api/conduit.sh test",
+    "bench": "uv run --with locust locust -f bench/locustfile.py --host http://127.0.0.1:3000"
+  },
+  "dependencies": {
+    "hono": "4.13.13",
+    "@hono/standard-validator": "0.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4"
+  }
+}
