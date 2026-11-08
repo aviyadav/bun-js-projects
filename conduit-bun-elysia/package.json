@@ -1,0 +1,18 @@
+{
+  "name": "conduit-bun-elysia",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=production bun src/server.ts",
+    "start:cluster": "NODE_ENV=production bun src/cluster.ts",
+    "seed": "uv run seed/seed.py",
+    "api:test": "bash api/conduit.sh test",
+    "bench": "uv run --with locust locust -f bench/locustfile.py --host http://127.0.0.1:3000"
+  },
+  "dependencies": {
+    "elysia": "1.4.30"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4"
+  }
+}
